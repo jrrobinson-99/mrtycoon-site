@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+._*
+
+# Superseded media kept locally, not worth versioning
+media-src/superseded/
+
+# Local noise
+.vscode/
+*.log

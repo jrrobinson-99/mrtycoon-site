@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Codec check</title>
+<style>
+body{background:#0A0A0B;color:#F4F1EA;font:15px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;padding:2.5rem}
+h1{font-size:1.1rem;letter-spacing:.18em;text-transform:uppercase;color:#E8C766;margin-bottom:1.6rem}
+h2{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:#E8C766;margin:2.2rem 0 .8rem}
+table{border-collapse:collapse;width:100%;max-width:760px}
+td{padding:.45rem .8rem .45rem 0;border-bottom:1px solid rgba(244,241,234,.14);vertical-align:top}
+td:first-child{color:rgba(244,241,234,.6);white-space:nowrap}
+.ok{color:#7CD992}.bad{color:#FF6B6B}.meh{color:#E8C766}
+video{width:320px;border:1px solid rgba(244,241,234,.2);margin-top:.6rem;background:#000}
+.row{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:1rem}
+</style></head><body>
+<h1>Mr. Tycoon — video diagnostic</h1>
+<h2>What this browser claims it can play</h2>
+<table id="support"></table>
+<h2>What actually loads</h2>
+<table id="files"></table>
+<div class="row" id="previews"></div>
+<h2>Browser</h2>
+<table id="ua"></table>
+
+<script>
+var CODECS = {
+  'H.264 High (what the site now uses)':'video/mp4; codecs="avc1.640028"',
+  'H.264 Baseline'                     :'video/mp4; codecs="avc1.42E01E"',
+  'HEVC 8-bit'                         :'video/mp4; codecs="hvc1.1.6.L93.B0"',
+  'HEVC Main 10 (what Higgsfield made)':'video/mp4; codecs="hvc1.2.4.L120.B0"',
+  'VP9'                                :'video/webm; codecs="vp9"'
+};
+var FILES = ['assets/video/hero-orbit.v2.mp4','assets/video/architect.v2.mp4','assets/video/closer.v2.mp4'];
+var ERRS = {1:'ABORTED',2:'NETWORK — file not found or blocked',
+            3:'DECODE — file is corrupt',4:'SRC_NOT_SUPPORTED — codec this browser cannot play'};
+
+function row(t,label,value,cls){
+  var tr=t.insertRow(); tr.insertCell().textContent=label;
+  var c=tr.insertCell(); c.textContent=value; if(cls) c.className=cls;
+}
+
+var v=document.createElement('video'), sup=document.getElementById('support');
+for(var k in CODECS){
+  var r=v.canPlayType(CODECS[k]);
+  row(sup,k, r||'no', r==='probably'?'ok':(r==='maybe'?'meh':'bad'));
+}
+
+var ft=document.getElementById('files'), pv=document.getElementById('previews');
+FILES.forEach(function(src){
+  var el=document.createElement('video');
+  el.src=src; el.muted=true; el.playsInline=true; el.loop=true; el.autoplay=true; el.preload='auto';
+  el.onloadeddata=function(){ row(ft, src, 'OK — '+el.videoWidth+'x'+el.videoHeight+', '+el.duration.toFixed(1)+'s','ok'); };
+  el.onerror=function(){ var c=el.error?el.error.code:0;
+    row(ft, src, 'FAILED — '+(ERRS[c]||('code '+c)), 'bad'); };
+  pv.appendChild(el);
+});
+setTimeout(function(){ if(!ft.rows.length) row(ft,'(nothing reported)','check the file paths / that you are on http://localhost, not file://','bad'); },6000);
+
+var ua=document.getElementById('ua');
+row(ua,'userAgent',navigator.userAgent);
+row(ua,'page origin',location.origin, location.protocol==='file:'?'bad':'ok');
+if(location.protocol==='file:') row(ua,'WARNING','Serve over http://localhost — file:// blocks things the site needs','bad');
+</script>
+</body></html>

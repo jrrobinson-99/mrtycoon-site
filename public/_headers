@@ -1,0 +1,12 @@
+# Fingerprinted media never changes — cache it hard.
+/assets/video/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/frames/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# The HTML must never be stale, or a deploy won't be visible.
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate

@@ -1,0 +1,4 @@
+# Treat media as binary so git never tries to diff or merge it
+*.mp4  binary
+*.jpg  binary
+*.png  binary
