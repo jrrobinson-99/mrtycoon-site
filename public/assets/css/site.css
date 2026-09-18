@@ -374,9 +374,16 @@ main{position:relative;z-index:1}
 .close-title{font-size:clamp(2.2rem,6vw,5.4rem);max-width:16ch;margin-inline:auto}
 .close-sub{margin:2rem auto 3rem;max-width:48ch;font-size:1.1rem;color:var(--text-dim)}
 .cta-panel{max-width:760px;margin-inline:auto;padding:14px}
-/* The GHL calendar is a light widget we can't restyle, so it gets a clean white rounded
-   card inside the glass panel. min-height holds the space until GHL's script sizes it. */
-.ghl-frame{display:block;width:100%;min-height:680px;border:0;border-radius:22px;background:#fff}
+/* The GHL calendar is a light widget we can't restyle from outside. The wrapper gives it a
+   white rounded card that is see-through at rest, so the glass and the video show behind it,
+   and turns solid the moment someone points at it or tabs into it — nobody books through a haze.
+   min-height holds the space while GHL's script keeps the frame off-screen during load. */
+.ghl-wrap{min-height:680px;border-radius:22px;overflow:hidden;background:#fff;opacity:.8;
+  transition:opacity .45s var(--ease)}
+.ghl-wrap:hover,.ghl-wrap:focus-within{opacity:1}
+/* touch screens have no hover, so they rest a little more solid to stay easy to read */
+@media(hover:none){.ghl-wrap{opacity:.9}}
+.ghl-frame{display:block;width:100%;border:0;background:transparent}
 .close-foot{margin:3.4rem auto 0;max-width:46ch;font-family:var(--display);font-style:italic;
   font-size:clamp(1.05rem,1.7vw,1.4rem);line-height:1.5;color:var(--silver)}
 .close-foot strong{color:var(--platinum);font-weight:600}

@@ -53,6 +53,9 @@ assigns content to a specific day.
       Bookings land in GHL. No custom form — capture always goes through GHL.
       Don't add `loading="lazy"` to that iframe: GHL's script keeps the frame off-screen
       until it loads, so a lazy frame never loads and the panel stays empty.
+      The calendar's look (white card, see-through at rest, solid on hover or focus) lives on
+      the `.ghl-wrap` div around it, because GHL's script overwrites styles set on the iframe
+      itself. To change how see-through it is, edit the `opacity` on `.ghl-wrap` in `site.css`.
 - [ ] Work through the local launch checklist (`LAUNCH-NOTES.md`, not in this repo).
 
 ## Deploying to Cloudflare Pages

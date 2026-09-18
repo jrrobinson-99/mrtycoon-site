@@ -338,9 +338,13 @@
     <div class="cta-panel glass" data-reveal>
       <!-- GoHighLevel strategy-call calendar. The booking itself lives in GHL; to swap calendars, change the id in src and in the iframe id.
            Do NOT add loading="lazy": GHL's script parks the frame off-screen until it loads, and a lazy frame that is off-screen never loads. -->
-      <iframe class="ghl-frame" id="hYeEOouYH3DB4AB20G8l_mrtycoon_site" title="Book a strategy call with Mr. Tycoon"
-              src="https://api.leadconnectorhq.com/widget/booking/hYeEOouYH3DB4AB20G8l"
-              scrolling="no"></iframe>
+      <!-- The wrapper carries the look (white card, see-through at rest). GHL's script writes its own
+           opacity and position onto the iframe itself, so styling the iframe directly gets overridden. -->
+      <div class="ghl-wrap">
+        <iframe class="ghl-frame" id="hYeEOouYH3DB4AB20G8l_mrtycoon_site" title="Book a strategy call with Mr. Tycoon"
+                src="https://api.leadconnectorhq.com/widget/booking/hYeEOouYH3DB4AB20G8l"
+                scrolling="no"></iframe>
+      </div>
       <!-- GHL's own script: reveals the calendar once it loads and sizes the frame to fit, so it is never cut off. -->
       <script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
     </div>
