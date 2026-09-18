@@ -47,6 +47,11 @@ Quotes on the page are verbatim. Don't paraphrase, tidy the grammar, or add a qu
 without a source. The day counter in the Machine scene is a visual device — it never
 assigns content to a specific day.
 
+**Prices** live in the Investment section of `index.html`. The real figure is written in the
+HTML and the script only animates it, so a failed script can never show "$0". If a price
+changes, update both the visible number and its `data-count`. The Machine scene and the
+Machine price card describe the same package — change one, change the other.
+
 ## Before this goes live
 
 - [x] **GoHighLevel calendar embedded** in the close section (`.ghl-frame` in `index.html`).

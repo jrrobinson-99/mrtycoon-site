@@ -50,13 +50,16 @@ function splitHeading(heading) {
 
 /* ---------- count-up ---------- */
 
-function countUp(element) {
+function countUp(element, reducedMotion) {
   const end = Number(element.dataset.count);
+  // The real figure is already in the HTML. With motion reduced, leave it alone — a price
+  // should never be caught mid-count.
+  if (reducedMotion) return;
   const startTime = performance.now();
   const duration = 1600;
   function step(now) {
     const progress = clamp01((now - startTime) / duration);
-    element.textContent = Math.round(end * easeOutCubic(progress));
+    element.textContent = Math.round(end * easeOutCubic(progress)).toLocaleString('en-US');
     if (progress < 1) requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
@@ -226,7 +229,7 @@ export function initMotion({ onFrame, reducedMotion }) {
     entries.forEach(({ target, isIntersecting }) => {
       if (!isIntersecting) return;
       target.classList.add('is-in');
-      target.querySelectorAll('[data-count]').forEach(countUp);
+      target.querySelectorAll('[data-count]').forEach((element) => countUp(element, reducedMotion));
       if (target.id === 'split' && !reducedMotion) mentorHint();
       revealObserver.unobserve(target);
     });

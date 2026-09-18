@@ -120,7 +120,7 @@ main{position:relative;z-index:1}
   transition:translate .9s var(--ease)}
 .nav.is-in{translate:-50% 0}
 .nav-brand{font-family:var(--display);font-size:1.12rem;font-weight:600;color:var(--platinum);white-space:nowrap}
-.nav-links{display:flex;gap:1.4rem}
+.nav-links{display:flex;gap:1.15rem}
 .nav-links a{position:relative;font-size:.76rem;letter-spacing:.06em;color:var(--text-dim);white-space:nowrap;transition:color .3s}
 .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--platinum);
   scale:0 1;transition:scale .4s var(--ease)}
@@ -215,6 +215,7 @@ main{position:relative;z-index:1}
 .machine-inner{position:relative;padding-top:72px}
 .machine-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:clamp(1.6rem,4vh,3.4rem)}
 .machine-title{font-size:clamp(1.9rem,4.4vw,4rem)}
+.machine-note{margin-top:1rem;font-size:.62rem;letter-spacing:.16em;color:var(--ice)}
 .day{position:relative;flex:none;width:clamp(92px,11vw,150px);aspect-ratio:1}
 .day-ring{width:100%;height:100%;rotate:-90deg}
 .day-ring circle{fill:none;stroke-width:2}
@@ -369,6 +370,34 @@ main{position:relative;z-index:1}
 .marquee i{font-style:normal;color:var(--silver);font-size:.8rem}
 @keyframes marquee{to{translate:-50% 0}}
 
+/* ---------- the investment ---------- */
+.invest-grid{display:grid;grid-template-columns:1.08fr 1fr;gap:1.4rem;margin-top:3.6rem;align-items:stretch}
+.invest{padding:clamp(1.8rem,3vw,2.8rem);display:flex;flex-direction:column}
+.invest:nth-child(2){transition-delay:.12s}
+/* the Sprint is the offer; the Machine is the add-on — the platinum edge says which is which */
+.invest-main{border-color:rgba(255,255,255,.55);background:linear-gradient(145deg,rgba(255,255,255,.17),rgba(255,255,255,.04))}
+.invest-k{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;color:var(--silver)}
+.invest-main .invest-k{color:#fff}
+.chip{padding:.3rem .7rem;border-radius:999px;border:1px solid rgba(143,188,255,.5);background:rgba(143,188,255,.08);
+  color:var(--ice);font-size:.56rem;letter-spacing:.16em}
+.invest-price{margin-top:1.4rem;font-family:var(--display);font-weight:600;line-height:.9;
+  font-size:clamp(3.4rem,6.6vw,5.8rem);font-variant-numeric:tabular-nums;
+  background:var(--metal);-webkit-background-clip:text;background-clip:text;color:transparent}
+.invest-price small{font-size:.42em;font-weight:500;vertical-align:.95em;margin-right:.08em}
+.invest-sub{margin-top:1rem;font-size:1.02rem;color:var(--text)}
+.invest-sub strong{color:#fff;font-weight:700}
+.invest ul{margin:1.6rem 0 0}
+.invest li{position:relative;padding:.85rem 0 .85rem 1.5rem;border-top:1px solid var(--hair);font-size:.95rem;line-height:1.5}
+.invest li::before{content:"";position:absolute;left:.1rem;top:1.35rem;width:7px;height:7px;rotate:45deg;
+  background:var(--silver);border-radius:1.5px}
+.invest-main li::before{background:#fff}
+.invest-quote,.invest-fine{margin-top:auto;padding-top:1.8rem}
+.invest-quote{font-family:var(--display);font-style:italic;font-size:1.12rem;line-height:1.5;color:var(--silver)}
+.invest-fine{font-size:.84rem;line-height:1.6;color:var(--text-dim)}
+.invest-fine a{color:var(--platinum);text-decoration:underline;text-decoration-color:rgba(231,235,241,.4);text-underline-offset:3px}
+.invest-fine a:hover{text-decoration-color:var(--platinum)}
+.invest-cta{margin-top:2.8rem;text-align:center}
+
 /* ---------- close ---------- */
 .close-inner{text-align:center}
 .close-title{font-size:clamp(2.2rem,6vw,5.4rem);max-width:16ch;margin-inline:auto}
@@ -384,9 +413,6 @@ main{position:relative;z-index:1}
 /* touch screens have no hover, so they rest a little more solid to stay easy to read */
 @media(hover:none){.ghl-wrap{opacity:.9}}
 .ghl-frame{display:block;width:100%;border:0;background:transparent}
-.close-foot{margin:3.4rem auto 0;max-width:46ch;font-family:var(--display);font-style:italic;
-  font-size:clamp(1.05rem,1.7vw,1.4rem);line-height:1.5;color:var(--silver)}
-.close-foot strong{color:var(--platinum);font-weight:600}
 
 /* ---------- footer ---------- */
 .footer{position:relative;z-index:1;padding:6rem 0 3rem;text-align:center}
@@ -412,6 +438,8 @@ main{position:relative;z-index:1}
   .machine-head{align-items:center;margin-bottom:1.4rem}
   .machine-head .eyebrow{margin-bottom:.8rem}
   .machine-title{font-size:1.6rem}
+  .machine-note{margin-top:.6rem;font-size:.5rem;letter-spacing:.1em}
+  .invest-grid{grid-template-columns:1fr}
   /* room under the nodes for the quote, which is lifted out of the flow so the rail ends at the last node */
   .machine-body{padding-bottom:120px}
   .pipe{padding:0 0 0 30px}
@@ -467,6 +495,7 @@ main{position:relative;z-index:1}
   .pipe-quote{display:none}
   .machine-inner{padding-top:80px}
   .machine-title{font-size:1.35rem}
+  .machine-note{display:none}
   /* Three lanes don't fit under the headline on a short phone, so the headline steps aside:
      the lanes anchor to the whole stage instead of the body, just below the nav. */
   .machine-body{position:static;padding-bottom:0}
