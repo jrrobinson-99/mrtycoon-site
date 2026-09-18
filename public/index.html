@@ -336,11 +336,13 @@
     <p class="close-sub" data-reveal>“This is not for everybody, because most people don’t want to put in the work.” If you do — book the call.</p>
 
     <div class="cta-panel glass" data-reveal>
-      <!-- GoHighLevel embed slot: replace the .ghl-slot div below with the form or calendar embed code. -->
-      <div class="ghl-slot" id="ghlSlot">
-        <span class="mono">GoHighLevel embed goes here</span>
-        <p>Strategy-call form or calendar. Not connected yet — this panel captures nothing until the embed is pasted in.</p>
-      </div>
+      <!-- GoHighLevel strategy-call calendar. The booking itself lives in GHL; to swap calendars, change the id in src and in the iframe id.
+           Do NOT add loading="lazy": GHL's script parks the frame off-screen until it loads, and a lazy frame that is off-screen never loads. -->
+      <iframe class="ghl-frame" id="hYeEOouYH3DB4AB20G8l_mrtycoon_site" title="Book a strategy call with Mr. Tycoon"
+              src="https://api.leadconnectorhq.com/widget/booking/hYeEOouYH3DB4AB20G8l"
+              scrolling="no"></iframe>
+      <!-- GHL's own script: reveals the calendar once it loads and sizes the frame to fit, so it is never cut off. -->
+      <script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
     </div>
 
     <p class="close-foot" data-reveal>“You don’t need any experience. You don’t need any money… Now, you do have to pay for the education. And I know that’s the seed. <strong>That’s the seed that has the harvest in it.</strong>”</p>

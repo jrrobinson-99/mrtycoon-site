@@ -49,8 +49,10 @@ assigns content to a specific day.
 
 ## Before this goes live
 
-- [ ] **Paste in the GoHighLevel embed.** The close section has a labeled slot
-      (`.ghl-slot` in `index.html`). It captures nothing until then. No custom form.
+- [x] **GoHighLevel calendar embedded** in the close section (`.ghl-frame` in `index.html`).
+      Bookings land in GHL. No custom form — capture always goes through GHL.
+      Don't add `loading="lazy"` to that iframe: GHL's script keeps the frame off-screen
+      until it loads, so a lazy frame never loads and the panel stays empty.
 - [ ] Work through the local launch checklist (`LAUNCH-NOTES.md`, not in this repo).
 
 ## Deploying to Cloudflare Pages

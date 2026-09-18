@@ -374,11 +374,9 @@ main{position:relative;z-index:1}
 .close-title{font-size:clamp(2.2rem,6vw,5.4rem);max-width:16ch;margin-inline:auto}
 .close-sub{margin:2rem auto 3rem;max-width:48ch;font-size:1.1rem;color:var(--text-dim)}
 .cta-panel{max-width:760px;margin-inline:auto;padding:14px}
-.ghl-slot{min-height:280px;border-radius:22px;border:1.5px dashed rgba(231,235,241,.38);
-  display:grid;place-content:center;justify-items:center;gap:.9rem;padding:2rem;
-  background:repeating-linear-gradient(135deg,rgba(231,235,241,.03) 0 12px,transparent 12px 24px)}
-.ghl-slot .mono{color:var(--ice)}
-.ghl-slot p{max-width:40ch;font-size:.9rem;color:var(--text-dim)}
+/* The GHL calendar is a light widget we can't restyle, so it gets a clean white rounded
+   card inside the glass panel. min-height holds the space until GHL's script sizes it. */
+.ghl-frame{display:block;width:100%;min-height:680px;border:0;border-radius:22px;background:#fff}
 .close-foot{margin:3.4rem auto 0;max-width:46ch;font-family:var(--display);font-style:italic;
   font-size:clamp(1.05rem,1.7vw,1.4rem);line-height:1.5;color:var(--silver)}
 .close-foot strong{color:var(--platinum);font-weight:600}
