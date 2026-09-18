@@ -5,6 +5,22 @@
 # Superseded media kept locally, not worth versioning
 media-src/superseded/
 
+# Stays on JR's PC — only files that build the site belong in this repo.
+# Media Build/ is 1.6 GB of originals (two files are 792 MB; GitHub rejects over 100 MB).
+# The web-size copies the site actually uses live in public/assets/img/.
+Media Build/
+# Client discovery. Lives in the Obsidian vault, not the site repo.
+wiki/
+# Browser test screenshots and logs
+.playwright-mcp/
+# This repo is PUBLIC. Design specs and launch notes carry client-sensitive detail.
+docs/
+LAUNCH-NOTES.md
+
+# Secrets — none exist in this static site; this keeps it that way
+.env
+.env.*
+
 # Local noise
 .vscode/
 *.log

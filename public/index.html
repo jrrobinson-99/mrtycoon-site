@@ -3,547 +3,364 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mr. Tycoon — Going Pro University</title>
+<title>Mr. Tycoon — The 60-Day Sprint</title>
+<meta name="description" content="Mr. Tycoon, the Undisputed King of Wholesale. The 60-Day Sprint: the machine does the grind, and you get him on the negotiation.">
+<meta name="theme-color" content="#050B18">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Crect width='64' height='80' rx='16' fill='%23071022'/%3E%3Cg fill='none' stroke='%23E7EBF1' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M32 10v12M26 16h12M22 34c0-8 20-8 20 0 0 5-3 9-5 14H27c-2-5-5-9-5-14zM20 52h24M23 52l-3 12h24l-3-12M16 70h32'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#0A0A0B; --ink-2:#111114; --gold:#C9A227; --gold-lt:#E8C766;
-  --cream:#F4F1EA; --cream-dim:rgba(244,241,234,.62); --rule:rgba(244,241,234,.14);
-  --display:"Archivo Black","Helvetica Neue",Impact,sans-serif;
-  --body:"Inter","Helvetica Neue",Arial,sans-serif;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--ink);color:var(--cream);font-family:var(--body);
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.55}
-img,video,canvas{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-
-/* film grain */
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.05;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>")}
-
-.wrap{width:min(1240px,92vw);margin:0 auto}
-.eyebrow{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);
-  display:flex;align-items:center;gap:.9rem}
-.eyebrow::before{content:"";width:42px;height:1px;background:var(--gold)}
-.display{font-family:var(--display);text-transform:uppercase;line-height:.92;letter-spacing:-.02em}
-.gold{color:var(--gold-lt)}
-.rule{height:1px;background:var(--rule);border:0}
-
-/* ---------- buttons ---------- */
-.btn{display:inline-flex;align-items:center;gap:.75rem;padding:1.05rem 1.9rem;
-  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;
-  background:var(--gold);color:#151004;border:1px solid var(--gold);cursor:pointer;
-  transition:background .35s,color .35s,transform .35s}
-.btn:hover{background:var(--gold-lt);transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:var(--cream);border-color:var(--rule)}
-.btn-ghost:hover{background:transparent;border-color:var(--gold);color:var(--gold-lt)}
-
-/* ---------- hero ---------- */
-#hero{height:520vh;position:relative}
-.hero-stage{position:sticky;top:0;height:100vh;overflow:hidden;
-  display:grid;place-items:center;background:#000}
-#orbit{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero-veil{position:absolute;inset:0;
-  background:
-    linear-gradient(180deg,rgba(10,10,11,.55),rgba(10,10,11,.15) 28%,rgba(10,10,11,.15) 62%,rgba(10,10,11,.8)),
-    radial-gradient(ellipse at 50% 52%,rgba(10,10,11,.30) 20%,rgba(10,10,11,.82) 82%)}
-.hero-copy{position:relative;z-index:3;text-align:center;padding:0 6vw;width:100%}
-/* sized for Archivo Black, which is ~18% wider than the Helvetica fallback */
-.hero-name{font-size:clamp(2.4rem,11vw,12rem);letter-spacing:-.035em;white-space:nowrap;
-  text-shadow:0 .06em .5em rgba(10,10,11,.85),0 0 1.4em rgba(10,10,11,.7)}
-.hero-name span{display:inline-block;opacity:0;transform:translateY(.35em);
-  transition:opacity .5s,transform .5s}
-.hero-name span.in{opacity:1;transform:none}
-.hero-sub{margin-top:1.6rem;font-size:clamp(.95rem,1.5vw,1.15rem);color:var(--cream);
-  max-width:46ch;margin-inline:auto;opacity:0;transition:opacity .8s;
-  text-shadow:0 .1em .7em rgba(10,10,11,.95)}
-.hero-sub.in{opacity:1}
-.tagline{position:absolute;inset:0;display:grid;place-content:center;text-align:center;
-  z-index:4;pointer-events:none;padding:0 6vw}
-.tagline::before{content:"";position:absolute;left:0;right:0;top:28%;bottom:28%;
-  background:linear-gradient(90deg,transparent,rgba(10,10,11,.92) 18%,rgba(10,10,11,.92) 82%,transparent);
-  opacity:0;transition:opacity .6s}
-.tagline.lit::before{opacity:1}
-.tagline p{position:relative;font-family:var(--display);text-transform:uppercase;line-height:1.06;
-  font-size:clamp(1.15rem,3.5vw,2.9rem);max-width:22ch;margin-inline:auto;
-  opacity:0;transform:translateY(.4em);
-  transition:opacity .6s,transform .6s;text-shadow:0 .08em .6em rgba(10,10,11,.9)}
-.tagline p.in{opacity:1;transform:none}
-.hero-cta{position:absolute;left:50%;bottom:7vh;transform:translateX(-50%);z-index:5;
-  opacity:0;transition:opacity .6s}
-.hero-cta.in{opacity:1}
-.scroll-hint{position:absolute;left:50%;bottom:2.4vh;transform:translateX(-50%);z-index:5;
-  font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream-dim)}
-
-/* ---------- stats ---------- */
-#stats{padding:8rem 0}
-.stat-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{padding:0 2rem;border-left:1px solid var(--rule)}
-.stat:first-child{padding-left:0;border-left:0}
-.stat-num{font-family:var(--display);font-size:clamp(2.4rem,5.4vw,4.2rem);color:var(--gold-lt);
-  line-height:1}
-.stat-lbl{margin-top:.9rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--cream-dim)}
-
-/* ---------- video sections ---------- */
-.vsection{position:relative;min-height:100vh;display:grid;align-items:center;overflow:hidden;
-  background:#000}
-/* The clips are already dark (architect ~74/255, closer ~37/255 mean luma).
-   Darken ONCE, with the scrim — never with opacity as well. */
-.vbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  filter:brightness(1.15) contrast(1.05)}
-.vsection::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,
-    rgba(10,10,11,.94) 0%,rgba(10,10,11,.88) 34%,
-    rgba(10,10,11,.55) 66%,rgba(10,10,11,.30) 100%)}
-.vsection>.wrap{position:relative;z-index:2;padding:9rem 0}
-
-.sec-head{font-size:clamp(1.6rem,4.4vw,3.4rem);max-width:18ch;margin:1.6rem 0 4.5rem}
-
-/* pillars */
-.pillar{display:grid;grid-template-columns:5.5rem 1fr;gap:2rem;padding:2.6rem 0;
-  border-top:1px solid var(--rule);opacity:0;transform:translateY(26px);
-  transition:opacity .7s,transform .7s}
-.pillar.in{opacity:1;transform:none}
-.pillar-n{font-family:var(--display);font-size:1.5rem;color:var(--gold)}
-.pillar h3{font-family:var(--display);text-transform:uppercase;font-size:clamp(1.6rem,3.4vw,2.6rem);
-  margin-bottom:.9rem}
-.pillar q{display:block;color:var(--gold-lt);font-size:1.02rem;font-style:italic;margin-bottom:.9rem}
-.pillar p{color:var(--cream-dim);max-width:62ch}
-
-/* ---------- flagship ---------- */
-#flagship{background:var(--ink-2);padding:11rem 0;border-block:1px solid var(--rule)}
-.flag-head{font-size:clamp(2.4rem,8vw,7rem)}
-.flag-sub{font-family:var(--display);text-transform:uppercase;color:var(--gold-lt);
-  font-size:clamp(1rem,2.2vw,1.7rem);margin-top:1rem}
-.flag-body{display:grid;grid-template-columns:1.15fr 1fr;gap:5rem;margin-top:4.5rem;align-items:start}
-.flag-body>p{color:var(--cream-dim);font-size:1.08rem;max-width:52ch}
-.incl{list-style:none;margin-top:2.4rem}
-.incl li{padding:1.05rem 0 1.05rem 2.2rem;border-top:1px solid var(--rule);position:relative;
-  color:var(--cream-dim)}
-.incl li::before{content:"";position:absolute;left:0;top:1.55rem;width:9px;height:9px;
-  background:var(--gold)}
-.terms{border:1px solid var(--rule);padding:2.4rem}
-.term-row{display:flex;justify-content:space-between;gap:1rem;padding:.95rem 0;
-  border-bottom:1px solid var(--rule);font-size:.85rem}
-.term-row:last-of-type{border-bottom:0}
-.term-row b{color:var(--gold-lt);font-weight:600}
-.qualify{margin-top:1.8rem;font-size:.9rem;color:var(--gold-lt);font-style:italic}
-
-/* ---------- proof ---------- */
-.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:1rem}
-.card{border:1px solid var(--rule);padding:2.2rem 1.8rem;min-height:15rem;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  background:rgba(10,10,11,.62);backdrop-filter:blur(3px);
-  transition:transform .45s,border-color .45s,background .45s}
-.card:hover{transform:translateY(-9px);border-color:var(--gold);background:rgba(10,10,11,.78)}
-.card h4{font-family:var(--display);text-transform:uppercase;font-size:1.15rem;margin-bottom:.7rem}
-.card p{font-size:.88rem;color:var(--cream-dim)}
-.mentors{margin-top:3rem;font-size:.82rem;color:var(--cream-dim);letter-spacing:.02em}
-
-/* ---------- finale ---------- */
-#finale{padding:12rem 0;text-align:center}
-.fin-head{font-size:clamp(2.2rem,7vw,6rem)}
-.fin-quote{margin:2.2rem auto 3.6rem;max-width:44ch;color:var(--gold-lt);font-style:italic;
-  font-size:1.1rem}
-form{max-width:640px;margin:0 auto;text-align:left}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-input,select{width:100%;padding:1.05rem 1.1rem;margin-bottom:1rem;background:transparent;
-  border:1px solid var(--rule);color:var(--cream);font-family:inherit;font-size:.95rem}
-input:focus,select:focus{outline:0;border-color:var(--gold)}
-select{appearance:none}
-option{background:var(--ink-2)}
-.fin-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.4rem}
-.textline{margin-top:2.4rem;font-size:.9rem;color:var(--cream-dim)}
-.textline b{color:var(--gold-lt)}
-
-/* ---------- footer ---------- */
-footer{border-top:1px solid var(--rule);padding:5rem 0 3rem;text-align:center}
-.sign{font-family:var(--display);text-transform:uppercase;font-size:clamp(1.05rem,2.6vw,1.9rem);
-  max-width:26ch;margin:0 auto 2rem;line-height:1.2}
-.socials{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;
-  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim)}
-.socials a:hover{color:var(--gold-lt)}
-.copy{margin-top:2.6rem;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(244,241,234,.32)}
-
-/* ---------- responsive ---------- */
-@media(max-width:900px){
-  #hero{height:300vh}
-  .stat-grid{grid-template-columns:1fr 1fr;gap:2.6rem 0}
-  .stat{padding:0 1.2rem}
-  .stat:nth-child(3){padding-left:0;border-left:0}
-  .flag-body{grid-template-columns:1fr;gap:3rem}
-  .proof-grid{grid-template-columns:1fr 1fr}
-  .pillar{grid-template-columns:1fr;gap:.6rem}
-  .frow{grid-template-columns:1fr}
-  .vsection::after{background:linear-gradient(180deg,rgba(10,10,11,.55),rgba(10,10,11,.88))}
-}
-@media(prefers-reduced-motion:reduce){
-  *{animation:none!important;transition-duration:.01ms!important}
-  .hero-name span,.hero-sub,.pillar,.hero-cta{opacity:1!important;transform:none!important}
-  .tagline{display:none}
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body>
+<body class="is-loading">
+
+<!-- Quotes on this page are verbatim. Don't paraphrase them or tidy the grammar. -->
+
+<!-- ================= PRELOADER ================= -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <svg class="king" viewBox="0 0 64 80" fill="none">
+    <path pathLength="1" d="M32 4v14M25 11h14"/>
+    <path pathLength="1" d="M20 31c0-9 24-9 24 0 0 6-4 10-6 16H26c-2-6-6-10-6-16z"/>
+    <path pathLength="1" d="M18 51h28M22 51l-3 15h26l-3-15"/>
+    <path pathLength="1" d="M17 66h30M13 73h38"/>
+  </svg>
+  <p class="preloader-line">King Moves, not Pawn Moves</p>
+  <div class="preloader-bar"><i id="preloaderFill"></i></div>
+</div>
+
+<canvas class="dust" id="dust" aria-hidden="true"></canvas>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <a class="nav-brand" href="#hero">Mr. Tycoon</a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#machine">The Sprint</a>
+    <a href="#mentor">The Mentor</a>
+    <a href="#room">The Room</a>
+    <a href="#longgame">The Long Game</a>
+  </nav>
+  <a class="btn btn-sm" href="#close" data-magnetic>Strategy Call</a>
+</header>
+
+<main>
 
 <!-- ================= HERO ================= -->
-<section id="hero">
+<section id="hero" class="hero">
   <div class="hero-stage">
-    <canvas id="orbit"></canvas>
-    <video id="orbitVideo" playsinline muted preload="auto" style="display:none"
-           src="assets/video/hero-orbit.v2.mp4"></video>
-    <div class="hero-veil"></div>
+    <canvas id="orbit" class="hero-canvas"></canvas>
+    <video id="orbitVideo" playsinline muted preload="none" hidden
+           data-src="assets/video/hero-orbit.v2.mp4"></video>
+    <div class="regrade" aria-hidden="true"></div>
+    <div class="hero-veil" aria-hidden="true"></div>
+    <div class="pinstripe" aria-hidden="true"></div>
 
-    <div class="hero-copy">
-      <h1 class="display hero-name" id="heroName">MR. TYCOON</h1>
-      <p class="hero-sub" id="heroSub">I turn distressed property into generational wealth — and I'll show you exactly how.</p>
+    <div class="hero-copy" id="heroCopy">
+      <p class="eyebrow eyebrow-center">The Undisputed King of Wholesale</p>
+      <h1 class="hero-name" id="heroName" aria-label="Mr. Tycoon">MR. TYCOON</h1>
+      <p class="hero-sub" id="heroSub">“I’m still in the business. I’m not one of them guys who talk about a business that ain’t done it in the last 10 to 20 years.”</p>
     </div>
 
     <div class="tagline" id="tagline">
-      <p data-t="0">In order to get your money right</p>
-      <p data-t="1" class="gold">you got to get your mind right.</p>
+      <p>In order to get your <em>Money Right</em></p>
+      <p>you must get your <em>Mind Right!</em></p>
     </div>
 
-    <a href="#finale" class="btn hero-cta" id="heroCta">Request My Strategy Call →</a>
-    <div class="scroll-hint">Scroll</div>
+    <a href="#close" class="btn hero-cta" id="heroCta" data-magnetic>Request My Strategy Call <span class="arrow">→</span></a>
+    <div class="scroll-hint" id="scrollHint"><span></span>Scroll</div>
   </div>
 </section>
 
-<!-- ================= STATS ================= -->
-<section id="stats"><div class="wrap">
-  <div class="stat-grid">
-    <div class="stat"><div class="stat-num" data-count="30" data-suffix="+">0</div>
-      <div class="stat-lbl">Years in the game</div></div>
-    <div class="stat"><div class="stat-num" data-count="2000" data-prefix="$">0</div>
-      <div class="stat-lbl">Per hour of his time</div></div>
-    <div class="stat"><div class="stat-num" data-count="40" data-suffix="%">0</div>
-      <div class="stat-lbl">Of acquisitions from probate &amp; distress</div></div>
-    <div class="stat"><div class="stat-num" data-count="60">0</div>
-      <div class="stat-lbl">Days to your first deal</div></div>
-  </div>
-</div></section>
+<!-- ================= LETTER ================= -->
+<section id="letter" class="section letter">
+  <div class="wrap letter-grid">
+    <figure class="portrait glass" data-tilt data-reveal>
+      <img src="assets/img/portrait.jpg" alt="Mr. Tycoon, smiling, in a plaid blazer on a navy sofa" loading="lazy" width="1298" height="1400">
+      <figcaption><span class="mono">MR. TYCOON</span><span class="mono dim">The Wealth Architect</span></figcaption>
+    </figure>
 
-<!-- ================= PILLARS ================= -->
-<section class="vsection" id="pillars">
-  <video class="vbg" src="assets/video/architect.v2.mp4" poster="assets/frames/architect-poster.v2.jpg"
-         autoplay muted loop playsinline preload="metadata"></video>
+    <div class="letter-body">
+      <p class="eyebrow" data-reveal>Why this exists</p>
+      <h2 class="display" data-split>Super<em>Star</em> —</h2>
+      <blockquote class="letter-quote" data-reveal>
+        <p>“I was going to seminars, and I was seeing people buy courses, but they were unable to get through the course because there was no… hand-holding or mentorship to go along with it.”</p>
+        <p>“You’d fly maybe to Tampa or Orlando, and then you’d go home with your — back then — cassette tapes or VHSes, <strong>which you couldn’t call a mentor.</strong>”</p>
+      </blockquote>
+      <p class="lede" data-reveal>The gap was never information. It was mentorship. That’s the business he built — and it’s why the Sprint is a system with him inside it, not a course in a box.</p>
+      <p class="sig" data-reveal>“I’m a GPS — a guy with a professional system.”</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NUMBERS ================= -->
+<section id="numbers" class="section numbers">
+  <div class="wrap num-grid">
+    <div class="num glass" data-tilt data-reveal>
+      <div class="num-val"><span data-count="30">0</span></div>
+      <p class="num-lbl">Years in the real estate game — and still doing deals</p>
+    </div>
+    <div class="num glass" data-tilt data-reveal>
+      <div class="num-val"><span data-count="5">0</span></div>
+      <p class="num-lbl">Decades in business. “I started off seven. I’m 60 now.”</p>
+    </div>
+    <div class="num glass" data-tilt data-reveal>
+      <div class="num-val"><span data-count="60">0</span></div>
+      <p class="num-lbl">Days in the Sprint. Done with you</p>
+    </div>
+    <div class="num glass" data-tilt data-reveal>
+      <div class="num-val"><span data-count="80">0</span><small>%</small></div>
+      <p class="num-lbl">Mental. “The 20% is the mechanical, following the steps, following the recipe.”</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE PLAY ================= -->
+<section id="play" class="section play">
+  <video class="bg-video" data-src="assets/video/architect.v2.mp4" poster="assets/frames/architect-poster.v2.jpg"
+         muted loop playsinline preload="none" aria-hidden="true"></video>
+  <div class="regrade" aria-hidden="true"></div>
+  <div class="bg-scrim" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="eyebrow">The Framework</div>
-    <h2 class="display sec-head">Information is common.<br><span class="gold">Transformation is rare.</span></h2>
+    <p class="eyebrow" data-reveal>The Play</p>
+    <p class="play-text" id="playText">“People been wholesaling everything. That’s all a farmer does — he grows his farm, he sell it to a middle man, middle man take it to Publix, Kroger’s. And that’s all we’re doing. And that’s what I want to show you how to do.”</p>
+    <p class="mono dim play-cite" data-reveal>— Mr. Tycoon, on what wholesaling is</p>
+  </div>
+</section>
 
-    <div class="pillar">
-      <div class="pillar-n">01</div>
-      <div>
-        <h3>Mind</h3>
-        <q>Most people major in minor things and minor in the major things.</q>
-        <p>Belief system, self-talk, and the discipline to stop taking shorts on your own life. The work that has to happen before the money works.</p>
+<!-- ================= THE MACHINE ================= -->
+<section id="machine" class="machine" aria-label="The 60-Day Sprint">
+  <div class="machine-stage" id="machineStage">
+    <div class="pinstripe" aria-hidden="true"></div>
+
+    <div class="wrap machine-inner">
+      <div class="machine-head">
+        <div>
+          <p class="eyebrow">The 60-Day Sprint</p>
+          <h2 class="display machine-title">The machine does the grind.<br><em>You get me.</em></h2>
+        </div>
+        <div class="day" aria-hidden="true">
+          <svg viewBox="0 0 120 120" class="day-ring">
+            <circle cx="60" cy="60" r="54" class="day-ring-bg"/>
+            <circle cx="60" cy="60" r="54" class="day-ring-fg" id="dayRing" pathLength="1"/>
+          </svg>
+          <div class="day-num"><span class="mono">DAY</span><b id="dayNum">01</b></div>
+        </div>
       </div>
-    </div>
 
-    <div class="pillar">
-      <div class="pillar-n">02</div>
-      <div>
-        <h3>Money</h3>
-        <q>Learn before you earn. Shortcuts lead to dead ends.</q>
-        <p>Wholesaling, the 65% rule, ARV comps, Maximum Offer Price, probate and distressed acquisition. The actual mechanics of the vehicle.</p>
-      </div>
-    </div>
+      <div class="machine-body">
+        <!-- layer 1: the pipeline -->
+        <div class="pipe" id="pipe">
+          <div class="pipe-rail" aria-hidden="true">
+            <div class="pipe-live"><i></i><i></i><i></i></div>
+          </div>
+          <ol class="nodes">
+            <li class="node glass" data-at="0.08">
+              <span class="node-ix mono">01</span>
+              <svg class="node-ic" viewBox="0 0 24 24"><path d="M5 6h14M5 12h14M5 18h9"/></svg>
+              <h3>Lists</h3>
+              <p>He supplies the seller lists. You don’t go hunting for them.</p>
+              <span class="node-tag mono">Supplied</span>
+            </li>
+            <li class="node glass" data-at="0.22">
+              <span class="node-ix mono">02</span>
+              <svg class="node-ic" viewBox="0 0 24 24"><path d="M4 10v4l11 5V5L4 10zM18 9a4 4 0 010 6"/></svg>
+              <h3>Marketing</h3>
+              <p>“Marketing is the lifeblood of any business.” It runs without you.</p>
+              <span class="node-tag mono">Automated</span>
+            </li>
+            <li class="node glass" data-at="0.36">
+              <span class="node-ix mono">03</span>
+              <svg class="node-ic" viewBox="0 0 24 24"><path d="M20 12a8 8 0 10-3 6.2M20 5v7h-7"/></svg>
+              <h3>Follow-up</h3>
+              <p>Every lead gets chased. Nobody slips because you got busy.</p>
+              <span class="node-tag mono">Automated</span>
+            </li>
+            <li class="node glass" data-at="0.50">
+              <span class="node-ix mono">04</span>
+              <svg class="node-ic" viewBox="0 0 24 24"><path d="M7 3h8l4 4v14H7zM15 3v4h4M10 13h6M10 17h6"/></svg>
+              <h3>Paperwork</h3>
+              <p>Application and contract fill-out, handled — ready for a John Henry.</p>
+              <span class="node-tag mono">Automated</span>
+            </li>
+            <li class="node node-human glass" data-at="0.64">
+              <span class="node-ix mono">05</span>
+              <span class="node-face"><img src="assets/img/portrait.jpg" alt="" loading="lazy"></span>
+              <h3>The Negotiation</h3>
+              <p>“We’re dealing with human beings.” This part stays human.</p>
+              <span class="node-tag mono">You + Mr. Tycoon</span>
+            </li>
+          </ol>
+          <p class="pipe-quote" id="pipeQuote">“The other thing I’m gonna offer you that you can get nowhere else — <em>you get me.</em>”</p>
+        </div>
 
-    <div class="pillar">
-      <div class="pillar-n">03</div>
-      <div>
-        <h3>Mission</h3>
-        <q>Give them the skill, not the stuff.</q>
-        <p>Legacy and multiplication. One apple seed produces a tree — we can't eat the seed, we got to plant it. What you hand the next generation is the whole point.</p>
+        <!-- layer 2: who does what -->
+        <div class="lanes" id="lanes">
+          <div class="lane glass">
+            <p class="mono lane-k">The Machine</p>
+            <ul>
+              <li>Lists, supplied</li>
+              <li>Marketing and outreach</li>
+              <li>Follow-up on every lead</li>
+              <li>Application and contract fill-out</li>
+            </ul>
+          </div>
+          <div class="lane lane-him glass">
+            <p class="mono lane-k">Mr. Tycoon</p>
+            <ul>
+              <li>Weekly live group coaching</li>
+              <li>On the negotiation with you — “so they can see me do it. That way they can duplicate it.”</li>
+              <li>Helps you find the buyer, A to Z</li>
+            </ul>
+          </div>
+          <div class="lane glass">
+            <p class="mono lane-k">You</p>
+            <ul>
+              <li>Show up. Make the call. Do the work.</li>
+              <li>“I can’t put the fish on the bait for you. You gotta at least hold a pole to put in the water.”</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= FLAGSHIP ================= -->
-<section id="flagship"><div class="wrap">
-  <div class="eyebrow">The Flagship</div>
-  <h2 class="display flag-head">60 days to<br>your <span class="gold">first deal.</span></h2>
-  <div class="flag-sub">Done with you. Not done for you.</div>
+<!-- ================= MENTOR ================= -->
+<section id="mentor" class="section mentor">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>Which one you get depends on you</p>
+    <h2 class="display" data-split>Drill sergeant. <em>Zen mentor.</em></h2>
 
-  <div class="flag-body">
+    <div class="split glass" id="split" data-reveal>
+      <div class="split-pane split-zen">
+        <p class="mono split-k">Zen Mentor</p>
+        <p class="split-q">“The GPS don’t tell you… you’re messing up. It just says reroute, and tells you what next turn to take.”</p>
+        <p class="split-s">“I’m more now of a Phil Jackson.”</p>
+      </div>
+      <div class="split-pane split-drill" id="splitTop">
+        <p class="mono split-k">Drill Sergeant</p>
+        <p class="split-q">“If you’re not doing no marketing, we ain’t gonna make no money.”</p>
+        <p class="split-s">“Everyone’s not built for a Bobby Knight kind of approach.”</p>
+      </div>
+      <div class="split-handle" id="splitHandle" aria-hidden="true"><span>‹ ›</span></div>
+      <input class="split-range" id="splitRange" type="range" min="4" max="96" value="50"
+             aria-label="Slide between drill sergeant and zen mentor">
+    </div>
+
+    <p class="mentor-foot" data-reveal>“I don’t harp on what you’re not doing. I just tell you what’s the next step.”</p>
+  </div>
+</section>
+
+<!-- ================= THE ROOM ================= -->
+<section id="room" class="section room">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>The Room</p>
+    <h2 class="display" data-split>“I like the hands-on OJT — <em>on-job training.</em>”</h2>
+  </div>
+  <div class="drift" id="drift">
+    <div class="drift-row" data-dir="-1">
+      <figure class="shot"><img src="assets/img/room-2.jpg" alt="A workshop table with every hand raised as Mr. Tycoon teaches" loading="lazy"></figure>
+      <figure class="shot"><img src="assets/img/room-5.jpg" alt="Mr. Tycoon seated at the head of a full workshop table" loading="lazy"></figure>
+      <figure class="shot"><img src="assets/img/room-1.jpg" alt="Mr. Tycoon making a point at the whiteboard" loading="lazy"></figure>
+      <figure class="shot"><img src="assets/img/room-7.jpg" alt="The whole workshop group, thumbs up, around Mr. Tycoon" loading="lazy"></figure>
+    </div>
+    <div class="drift-row" data-dir="1">
+      <figure class="shot"><img src="assets/img/room-3.jpg" alt="Students raising their hands during a session" loading="lazy"></figure>
+      <div class="shot shot-quote glass"><p>“I hear and I forget… I do and I understand.”</p><span class="mono dim">Confucius — a quote he teaches from. His line on it: “that’s when we really know that we know — when we can teach it.”</span></div>
+      <figure class="shot"><img src="assets/img/room-4.jpg" alt="Mr. Tycoon teaching from the front of the room" loading="lazy"></figure>
+      <figure class="shot"><img src="assets/img/room-6.jpg" alt="Students gathered around Mr. Tycoon at the table" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE REASON ================= -->
+<section id="reason" class="section reason">
+  <div class="wrap reason-grid">
     <div>
-      <p>You bring the effort. I bring the lists, the phone system, the CRM, the follow-up automation, and three decades of negotiation experience on the line with you.</p>
-      <ul class="incl">
-        <li>Curated seller lists and marketing handled for you</li>
-        <li>Automated follow-up so no lead goes cold</li>
-        <li>Weekly live calls — Mr. Tycoon negotiates alongside you</li>
-        <li>Funding available on qualifying deals</li>
-        <li>The 65% rule, ARV comps, and Maximum Offer Price, taught properly</li>
-      </ul>
+      <p class="eyebrow" data-reveal>The Reason</p>
+      <p class="reason-quote" data-reveal>“I gotta have play time with my children, I gotta have date night with my wife. In order for me to have that, I gotta have enough money over here <em>to be able to step away.</em>”</p>
+      <p class="lede" data-reveal>Real estate is a vehicle. It was never the point.</p>
     </div>
-
-    <div class="terms">
-      <div class="term-row"><span>Program value</span><b>$10,000</b></div>
-      <div class="term-row"><span>Founding investment</span><b>$5,000</b></div>
-      <div class="term-row"><span>Financing</span><b>$1,000 down</b></div>
-      <div class="term-row"><span>Trial period</span><b>60 days</b></div>
-      <!-- CONFIRM remaining balance terms before launch -->
-      <p class="qualify">"Everybody don't want to go. Only book this call if you're ready to grind."</p>
-      <a href="#finale" class="btn" style="margin-top:1.8rem">Apply For The Sprint →</a>
+    <div class="deck" id="deck">
+      <figure class="card-photo"><img src="assets/img/life-3.jpg" alt="Mr. Tycoon in front of snow-capped mountains" loading="lazy"></figure>
+      <figure class="card-photo"><img src="assets/img/life-5.jpg" alt="Mr. Tycoon at dinner" loading="lazy"></figure>
+      <figure class="card-photo"><img src="assets/img/life-4.jpg" alt="Mr. Tycoon under a glass-flower ceiling" loading="lazy"></figure>
+      <figure class="card-photo"><img src="assets/img/life-2.jpg" alt="Mr. Tycoon on the beach" loading="lazy"></figure>
+      <figure class="card-photo"><img src="assets/img/life-1.jpg" alt="Mr. Tycoon on a balcony above the coast" loading="lazy"></figure>
     </div>
-  </div>
-</div></section>
-
-<!-- ================= PROOF ================= -->
-<section class="vsection" id="proof">
-  <video class="vbg" src="assets/video/closer.v2.mp4" poster="assets/frames/closer-poster.v2.jpg"
-         autoplay muted loop playsinline preload="metadata"></video>
-  <div class="wrap">
-    <div class="eyebrow">The Receipts</div>
-    <h2 class="display sec-head">I really do<br><span class="gold">this shit.</span></h2>
-
-    <div class="proof-grid">
-      <div class="card"><h4>The Portfolio</h4>
-        <p>A multi-million dollar commercial and residential holding, built deal by deal.</p></div>
-      <div class="card"><h4>The Book</h4>
-        <p><em>Success Is Not a Secret… It's a System.</em></p></div>
-      <div class="card"><h4>The Students</h4>
-        <p>Mentees closing deals — three in a single week.
-          <!-- REPLACE with two named testimonials + real numbers --></p></div>
-      <div class="card"><h4>The Stage</h4>
-        <p>Atlanta REIA, the Wholesale Renegade, keynotes and leadership workshops.</p></div>
-    </div>
-
-    <p class="mentors">Mentored by Ron LeGrand, Tony Robbins, Marshall Sylver and Stephen Pierce.</p>
   </div>
 </section>
 
-<!-- ================= FINALE ================= -->
-<section id="finale"><div class="wrap">
-  <h2 class="display fin-head">Your next level<br><span class="gold">starts here.</span></h2>
-  <p class="fin-quote">"You don't always need more muscle. Sometimes you need a better map."</p>
+<!-- ================= THE LONG GAME ================= -->
+<section id="longgame" class="section longgame">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>The Long Game</p>
+    <h2 class="display" data-split>Success is not a secret. <em>It’s a system.</em></h2>
 
-  <!-- Replace this form with the GoHighLevel embed. It currently captures nothing. -->
-  <form onsubmit="event.preventDefault();alert('Wire this to GoHighLevel before launch.')">
-    <div class="frow">
-      <input type="text" placeholder="First name" required>
-      <input type="text" placeholder="Last name" required>
-    </div>
-    <input type="email" placeholder="Email address" required>
-    <input type="tel" placeholder="Phone number" required>
-    <select required>
-      <option value="">What do you want to go pro in?</option>
-      <option>The 60-Day Sprint — wholesaling</option>
-      <option>Private mentorship</option>
-      <option>Speaking / booking Mr. Tycoon</option>
-      <option>Still figuring it out</option>
-    </select>
-    <div class="fin-btns">
-      <button class="btn" type="submit">Request My Strategy Call →</button>
-      <a href="#" class="btn btn-ghost">Bring Mr. Tycoon To Your Stage</a>
-    </div>
-  </form>
+    <ol class="timeline" id="timeline">
+      <li data-reveal><span class="tl-when mono">Age 7</span><div class="tl-card glass"><h3>First business</h3><p>“I started off seven.” A paper route, selling candy.</p></div></li>
+      <li data-reveal><span class="tl-when mono">Age 11</span><div class="tl-card glass"><h3>The county’s largest paper route</h3><p>So big he subcontracted it.</p></div></li>
+      <li data-reveal><span class="tl-when mono">1988</span><div class="tl-card glass"><h3>Going pro</h3><p>Leaves Morehouse College, where he played on a tennis scholarship, for the ATP Satellite Circuit. A wrist injury ends it.</p></div></li>
+      <li data-reveal><span class="tl-when mono">2005</span><div class="tl-card glass"><h3>Ron LeGrand</h3><p>“He taught me the wholesale game. He’s the one — I’m really just following his blueprint.” Master Degree, LeGrand Financial Freedom Academy.</p></div></li>
+      <li data-reveal><span class="tl-when mono">2007</span><div class="tl-card glass"><h3><i>Success Is Not a Secret, It’s a System</i></h3><p>His first book.</p></div></li>
+      <li data-reveal><span class="tl-when mono">2013</span><div class="tl-card glass"><h3><i>Jewels for Your Crown</i></h3><p>52 power quotes for your mind.</p></div></li>
+      <li data-reveal><span class="tl-when mono">Today</span><div class="tl-card tl-now glass"><h3>Still in the business</h3><p>“I’m a former Dan Kennedy student.” The rule he took from him: “A bad product started is better than a perfect product on the drawing board.”</p></div></li>
+    </ol>
+  </div>
+</section>
 
-  <p class="textline">Or text <b>404-585-1164</b> and say <b>"I'm ready."</b></p>
-</div></section>
+<!-- ================= JEWELS MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Half effort does not produce half results — it produces no results</span><i>◆</i>
+    <span>Life only rewards the diligent</span><i>◆</i>
+    <span>Proper Preparation Produces Profitable Performance</span><i>◆</i>
+    <span>Don’t compromise yourself. You are all you’ve got</span><i>◆</i>
+    <span>Half effort does not produce half results — it produces no results</span><i>◆</i>
+    <span>Life only rewards the diligent</span><i>◆</i>
+    <span>Proper Preparation Produces Profitable Performance</span><i>◆</i>
+    <span>Don’t compromise yourself. You are all you’ve got</span><i>◆</i>
+  </div>
+</div>
+
+<!-- ================= CLOSE ================= -->
+<section id="close" class="section close">
+  <video class="bg-video" data-src="assets/video/closer.v2.mp4" poster="assets/frames/closer-poster.v2.jpg"
+         muted loop playsinline preload="none" aria-hidden="true"></video>
+  <div class="regrade" aria-hidden="true"></div>
+  <div class="bg-scrim bg-scrim-center" aria-hidden="true"></div>
+
+  <div class="wrap close-inner">
+    <p class="eyebrow eyebrow-center" data-reveal>The Strategy Call</p>
+    <h2 class="display close-title" data-split>“You got to attempt before <em>I can assist.</em>”</h2>
+    <p class="close-sub" data-reveal>“This is not for everybody, because most people don’t want to put in the work.” If you do — book the call.</p>
+
+    <div class="cta-panel glass" data-reveal>
+      <!-- GoHighLevel embed slot: replace the .ghl-slot div below with the form or calendar embed code. -->
+      <div class="ghl-slot" id="ghlSlot">
+        <span class="mono">GoHighLevel embed goes here</span>
+        <p>Strategy-call form or calendar. Not connected yet — this panel captures nothing until the embed is pasted in.</p>
+      </div>
+    </div>
+
+    <p class="close-foot" data-reveal>“You don’t need any experience. You don’t need any money… Now, you do have to pay for the education. And I know that’s the seed. <strong>That’s the seed that has the harvest in it.</strong>”</p>
+  </div>
+</section>
+
+</main>
 
 <!-- ================= FOOTER ================= -->
-<footer><div class="wrap">
-  <p class="sign">I see your greatness.<br>What's more important is<br>for <span class="gold">you</span> to know you great.</p>
-  <div class="socials">
-    <a href="https://instagram.com/IamMrTycoon">Instagram</a>
-    <a href="https://tiktok.com/@TheRealMrTycoon">TikTok</a>
-    <a href="#">YouTube</a>
-    <a href="#">Facebook</a>
-    <a href="#">LinkedIn</a>
-    <a href="https://mrtycoon.com">MrTycoon.com</a>
+<footer class="footer">
+  <div class="wrap">
+    <p class="footer-line">King Moves,<br><em>not Pawn Moves.</em></p>
+    <div class="footer-meta">
+      <a href="https://instagram.com/IAmMrTycoon" target="_blank" rel="noopener">Instagram — @IAmMrTycoon</a>
+      <span>© 2026 Mr. Tycoon</span>
+    </div>
+    <p class="footer-legal">Nothing on this page is a promise of income. “I cannot guarantee you how much money you’re gonna make.” Results depend on the work you put in.</p>
   </div>
-  <p class="copy">Superstars · Grind Nation · © 2026 Tycoon N Training LLC</p>
-</div></footer>
+</footer>
 
-<script>
-(function(){
-  'use strict';
-  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------------- hero orbit scrub ----------------
-     Primary path: pre-extracted JPG frame sequence (buttery).
-     Fallback:     scrub the mp4's currentTime (works, slightly less smooth).
-  -------------------------------------------------- */
-  var TOTAL_FRAMES = 193;                 // set by extract-frames.sh
-  var FRAME_PATH   = 'assets/frames/orbit/orbit_';
-  var canvas = document.getElementById('orbit');
-  var ctx    = canvas.getContext('2d', {alpha:false});
-  var video  = document.getElementById('orbitVideo');
-  var frames = [], loaded = 0, useFrames = false, current = -1;
-
-  function pad(n){ return String(n).padStart(4,'0'); }
-
-  function sizeCanvas(){
-    var d = Math.min(devicePixelRatio||1, 2);
-    canvas.width  = innerWidth  * d;
-    canvas.height = innerHeight * d;
-    draw(current < 0 ? 0 : current, true);
-  }
-
-  function cover(w,h){
-    var s = Math.max(canvas.width/w, canvas.height/h);
-    return [ (canvas.width - w*s)/2, (canvas.height - h*s)/2, w*s, h*s ];
-  }
-
-  function draw(i, force){
-    if(!force && i === current) return;
-    current = i;
-    if(useFrames){
-      var img = frames[i];
-      if(!img || !img.complete || !img.naturalWidth) return;
-      var c = cover(img.naturalWidth, img.naturalHeight);
-      ctx.drawImage(img, c[0], c[1], c[2], c[3]);
-    }else if(video.readyState >= 2){
-      var cv = cover(video.videoWidth, video.videoHeight);
-      ctx.drawImage(video, cv[0], cv[1], cv[2], cv[3]);
-    }
-  }
-
-  // probe for a frame sequence; fall back to video scrubbing
-  var probe = new Image();
-  probe.onload = function(){
-    useFrames = true;
-    for(var i=0;i<TOTAL_FRAMES;i++){
-      var im = new Image();
-      im.onload = function(){ if(++loaded === 1) draw(0,true); };
-      im.src = FRAME_PATH + pad(i+1) + '.jpg';
-      frames.push(im);
-    }
-  };
-  probe.onerror = function(){
-    useFrames = false;
-    video.addEventListener('loadeddata', function(){ draw(0,true); });
-    video.load();
-  };
-  probe.src = FRAME_PATH + '0001.jpg';
-
-  /* ---------------- scroll choreography ---------------- */
-  var hero    = document.getElementById('hero');
-  var nameEl  = document.getElementById('heroName');
-  var subEl   = document.getElementById('heroSub');
-  var ctaEl   = document.getElementById('heroCta');
-  var tagEls  = document.querySelectorAll('#tagline p');
-
-  // split the name into per-letter spans
-  var letters = [];
-  nameEl.textContent.split('').forEach(function(ch){
-    var s = document.createElement('span');
-    s.textContent = ch === ' ' ? ' ' : ch;
-    letters.push(s);
-  });
-  nameEl.textContent = '';
-  letters.forEach(function(s){ nameEl.appendChild(s); });
-
-  var ticking = false, targetP = 0, renderP = 0;
-
-  function onScroll(){
-    var r = hero.getBoundingClientRect();
-    var span = hero.offsetHeight - innerHeight;
-    targetP = Math.min(1, Math.max(0, -r.top / span));
-    if(!ticking){ ticking = true; requestAnimationFrame(tick); }
-  }
-
-  function tick(){
-    // inertia: ease toward the true scroll position
-    renderP += (targetP - renderP) * (reduced ? 1 : 0.14);
-    if(Math.abs(targetP - renderP) < 0.0005) renderP = targetP;
-
-    var f = Math.round(renderP * ((useFrames ? TOTAL_FRAMES : 1) - 1));
-    if(useFrames){
-      draw(Math.max(0, Math.min(TOTAL_FRAMES-1, f)));
-    }else if(video.duration){
-      var t = renderP * (video.duration - 0.05);
-      if(Math.abs(video.currentTime - t) > 0.016){ video.currentTime = t; }
-      draw(0, true);
-    }
-
-    // letters track in across the first 35% of the hero
-    letters.forEach(function(s,i){
-      var at = 0.04 + (i / letters.length) * 0.30;
-      s.classList.toggle('in', renderP >= at);
-    });
-    subEl.classList.toggle('in',  renderP > 0.36);
-    ctaEl.classList.toggle('in',  renderP > 0.40 && renderP < 0.60);
-
-    // hero copy hands off to the kinetic tagline
-    var handing = renderP > 0.62;
-    nameEl.style.opacity = subEl.style.opacity = handing ? 0 : '';
-    document.getElementById('tagline').classList.toggle('lit', renderP > 0.64);
-    tagEls[0].classList.toggle('in', renderP > 0.66);
-    tagEls[1].classList.toggle('in', renderP > 0.78);
-
-    if(renderP !== targetP){ requestAnimationFrame(tick); } else { ticking = false; }
-  }
-
-  addEventListener('scroll', onScroll, {passive:true});
-  addEventListener('resize', sizeCanvas);
-  sizeCanvas(); onScroll();
-
-  /* ---------------- reveal + count-up ---------------- */
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(!e.isIntersecting) return;
-      var el = e.target;
-
-      if(el.classList.contains('pillar')){ el.classList.add('in'); io.unobserve(el); }
-
-      if(el.dataset.count){
-        var end = +el.dataset.count, pre = el.dataset.prefix||'', suf = el.dataset.suffix||'';
-        var t0 = performance.now(), dur = 1400;
-        (function step(now){
-          var p = Math.min(1,(now-t0)/dur);
-          var v = Math.round(end * (1 - Math.pow(1-p,3)));
-          el.textContent = pre + v.toLocaleString() + suf;
-          if(p<1) requestAnimationFrame(step);
-        })(t0);
-        io.unobserve(el);
-      }
-
-      // autoplay attribute does the work; this is the backup for browsers
-      // (or Low Power Mode) that refuse it. The poster covers the rest.
-      if(el.tagName === 'VIDEO'){ el.play().catch(function(){}); }
-    });
-  },{threshold:.25});
-
-  document.querySelectorAll('.pillar,[data-count],.vbg').forEach(function(el){ io.observe(el); });
-})();
-</script>
-
-<!-- TEMPORARY DIAGNOSTIC — delete this block once the videos are confirmed working -->
-<script id="vbg-diag">
-(function(){
-  // localhost only — never runs on the deployed site
-  if(!/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) return;
-  var E={1:'ABORTED',2:'NETWORK (file not found / blocked)',3:'DECODE (corrupt)',4:'SRC_NOT_SUPPORTED (codec)'};
-  function badge(sec,msg,ok){
-    var d=document.createElement('div');
-    d.style.cssText='position:absolute;top:14px;left:14px;z-index:9;font:12px/1.5 ui-monospace,monospace;'
-      +'padding:6px 10px;border:1px solid '+(ok?'#7CD992':'#FF6B6B')+';color:'+(ok?'#7CD992':'#FF6B6B')
-      +';background:rgba(0,0,0,.82)';
-    d.textContent=msg; sec.appendChild(d);
-  }
-  document.querySelectorAll('.vbg').forEach(function(v){
-    var sec=v.closest('.vsection'), name=v.getAttribute('src').split('/').pop();
-    v.addEventListener('error',function(){
-      var c=v.error?v.error.code:0;
-      badge(sec, name+' → '+(E[c]||('error '+c)), false);
-    });
-    v.addEventListener('loadeddata',function(){
-      badge(sec, name+' → OK '+v.videoWidth+'x'+v.videoHeight+(v.paused?' (PAUSED — autoplay blocked)':' playing'), !v.paused);
-    });
-    setTimeout(function(){
-      if(v.readyState===0 && !v.error) badge(sec, name+' → never loaded (readyState 0)', false);
-    },7000);
-  });
-})();
-</script>
+<script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
