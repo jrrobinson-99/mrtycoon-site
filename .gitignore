@@ -13,6 +13,8 @@ Media Build/
 wiki/
 # Browser test screenshots and logs
 .playwright-mcp/
+# Cloudflare deploy tool cache — holds the Cloudflare account ID and cached account details
+.wrangler/
 # This repo is PUBLIC. Design specs and launch notes carry client-sensitive detail.
 docs/
 LAUNCH-NOTES.md
