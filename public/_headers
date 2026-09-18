@@ -1,3 +1,9 @@
+# Keep the pages.dev address out of search engines. It is a working preview, not the public site.
+# Scoped to that hostname on purpose: it covers every file (photos too), and it stops applying by
+# itself the day a real domain is attached — nothing to remember to remove at launch.
+https://mrtycoon.pages.dev/*
+  X-Robots-Tag: noindex
+
 # Fingerprinted media never changes — cache it hard.
 /assets/video/*
   Cache-Control: public, max-age=31536000, immutable
