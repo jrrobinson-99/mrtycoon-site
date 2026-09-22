@@ -7,8 +7,8 @@
 # Override with:  FFMPEG_DIR=/path/to/dir ./extract-frames.sh
 set -euo pipefail
 
-SRC="public/assets/video/hero-orbit.v2.mp4"
-OUT="public/assets/frames/orbit"
+SRC="public/assets/video/hero-stage.v3.mp4"
+OUT="public/assets/frames/stage"
 FPS="${FPS:-16}"            # 16fps: the scrub easing hides the gaps, and 24fps would be half again as many frames
 WIDTH="${WIDTH:-1280}"      # the canvas is veiled and grayscaled, so 1280 holds up full-bleed
 QUALITY="${QUALITY:-8}"     # mjpeg q:v, 2=best/large … 10=small. The stage frames are detail-heavy; 8 keeps ~340 frames near 10 MB
@@ -30,7 +30,7 @@ rm -rf "$OUT" 2>/dev/null || true; mkdir -p "$OUT"
 # The Remotion build ships without the `fps` filter, so the rate is set with -r instead.
 "$FFMPEG" -hide_banner -loglevel error -i "$SRC" \
   -r "${FPS}" -vf "scale=${WIDTH}:-2:flags=lanczos" \
-  -q:v ${QUALITY} "$OUT/orbit_%04d.jpg"
+  -q:v ${QUALITY} "$OUT/stage_%04d.jpg"
 
 COUNT=$(ls -1 "$OUT" | wc -l | tr -d ' ')
 SIZE=$(du -sh "$OUT" | cut -f1)

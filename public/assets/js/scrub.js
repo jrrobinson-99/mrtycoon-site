@@ -2,7 +2,7 @@
 // Fallback: scrub the mp4's currentTime if the frames are missing.
 
 const TOTAL_FRAMES = 340; // set by extract-frames.sh (21s stage clip at 16fps)
-const FRAME_PATH = 'assets/frames/orbit/orbit_';
+const FRAME_PATH = 'assets/frames/stage/stage_';
 
 export function initScrub({ canvas, video, onProgress }) {
   const context = canvas.getContext('2d', { alpha: false });

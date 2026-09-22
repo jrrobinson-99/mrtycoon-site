@@ -28,8 +28,8 @@ public/                       <- this folder is what deploys
   assets/js/machine.js        the pinned 60-day scene
   assets/js/motion.js         reveals, tilt, dust, gallery, photo deck, mentor slider
   assets/img/                 web-size photos
-  assets/video/*.v2.mp4       three H.264 clips
-  assets/frames/orbit/        340 JPGs driving the hero scrub
+  assets/video/*.mp4          three H.264 clips
+  assets/frames/stage/        340 JPGs driving the hero scrub
   assets/frames/*-poster.v2.jpg
 media-src/                    NOT deployed
 extract-frames.sh             regenerates the orbit frames
@@ -80,10 +80,16 @@ to `public`.
 ./extract-frames.sh
 ```
 
-It re-slices `public/assets/video/hero-orbit.v2.mp4` at 16fps, 1280 wide. If the frame count
+It re-slices `public/assets/video/hero-stage.v3.mp4` at 16fps, 1280 wide. If the frame count
 changes, it tells you the new number — put it in `TOTAL_FRAMES` at the top of
 `public/assets/js/scrub.js`. `FPS`, `WIDTH` and `QUALITY` can be overridden as environment
 variables.
+
+**Give new media new names.** `_headers` tells browsers to keep anything under
+`assets/frames/` and `assets/video/` for a year without re-checking. Re-using a filename
+with new content leaves returning visitors on the old frames. When the clip changes, put
+the frames in a new folder (`OUT` in the script), give the mp4 a new filename, and update
+`FRAME_PATH` in `scrub.js` and `data-src` in `index.html`.
 
 ffmpeg is not installed on this Mac. The script uses the copy bundled with Remotion in
 `dev/Video Agent` (it needs its own folder on the dylib path, which the script sets). That
@@ -119,7 +125,7 @@ sips -s format jpeg -s formatOptions 74 -Z 1600 "IN.jpeg" --out public/assets/im
 **One animation loop.** `main.js` runs a single `requestAnimationFrame` loop; the other
 modules register a callback with `onFrame()` rather than each running their own.
 
-**Hero.** 520vh of scroll (320vh on phones) driving a sticky canvas. The frame index eases
+**Hero.** 950vh of scroll (560vh on phones) driving a sticky canvas. The frame index eases
 toward the true scroll position so the orbit feels weighted. Phones load every second
 frame. Falls back to scrubbing the mp4 if the frames are missing. The name animates in on
 load, then hands off to the tagline.
