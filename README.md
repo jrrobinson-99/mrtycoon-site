@@ -29,7 +29,7 @@ public/                       <- this folder is what deploys
   assets/js/motion.js         reveals, tilt, dust, gallery, photo deck, mentor slider
   assets/img/                 web-size photos
   assets/video/*.v2.mp4       three H.264 clips
-  assets/frames/orbit/        193 JPGs driving the hero scrub
+  assets/frames/orbit/        340 JPGs driving the hero scrub
   assets/frames/*-poster.v2.jpg
 media-src/                    NOT deployed
 extract-frames.sh             regenerates the orbit frames
@@ -80,9 +80,19 @@ to `public`.
 ./extract-frames.sh
 ```
 
-It re-slices `public/assets/video/hero-orbit.v2.mp4` at 24fps. If the frame count
+It re-slices `public/assets/video/hero-orbit.v2.mp4` at 16fps, 1280 wide. If the frame count
 changes, it tells you the new number — put it in `TOTAL_FRAMES` at the top of
-`public/assets/js/scrub.js`.
+`public/assets/js/scrub.js`. `FPS`, `WIDTH` and `QUALITY` can be overridden as environment
+variables.
+
+ffmpeg is not installed on this Mac. The script uses the copy bundled with Remotion in
+`dev/Video Agent` (it needs its own folder on the dylib path, which the script sets). That
+build has no `fps` filter, so the rate is set with `-r`. Point `FFMPEG_DIR` elsewhere if
+that folder moves.
+
+The current clip is three Higgsfield renders stitched end to end: the orbit from behind him
+to his face, the mic drop, and the fall that lands as the chess king. The three originals are
+in `media-src/` and the old studio orbit is in `media-src/superseded/`.
 
 ## Media notes
 

@@ -91,11 +91,12 @@ if (!reducedMotion) {
 
     scrub.setProgress(progress);
 
-    // name hands off to his printed line, one clause at a time
-    heroCopy.style.opacity = progress > 0.36 ? 0 : '';
-    taglineLines[0].classList.toggle('in', progress > 0.46 && progress < 0.97);
-    taglineLines[1].classList.toggle('in', progress > 0.6 && progress < 0.97);
-    heroCta.classList.toggle('in', introDone && (progress < 0.3 || progress > 0.78));
+    // The clip: 0–0.38 orbit from behind to his face, 0.38–0.62 the mic drop, 0.62–1 the fall and the king.
+    // The name sits on the back view, hands off to his printed line as he faces us, and the CTA returns once the king settles.
+    heroCopy.style.opacity = progress > 0.26 ? 0 : '';
+    taglineLines[0].classList.toggle('in', progress > 0.4 && progress < 0.96);
+    taglineLines[1].classList.toggle('in', progress > 0.52 && progress < 0.96);
+    heroCta.classList.toggle('in', introDone && (progress < 0.25 || progress > 0.82));
     scrollHint.style.opacity = progress > 0.05 ? 0 : '';
   });
 }

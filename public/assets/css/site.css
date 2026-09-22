@@ -128,7 +128,8 @@ main{position:relative;z-index:1}
 .nav-links a.is-active::after{scale:1 1}
 
 /* ---------- hero ---------- */
-.hero{height:520vh;position:relative}
+/* 21s clip: orbit → mic drop → king. ~45vh per second of footage keeps the scrub weighted. */
+.hero{height:950vh;position:relative}
 .hero-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;place-items:center;
   isolation:isolate}
 .hero-canvas,.hero .regrade,.hero-veil{-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
@@ -427,7 +428,7 @@ main{position:relative;z-index:1}
   .nav-links{display:none}
   .section{padding:4.5rem 0}
   .nav{gap:1rem;padding-left:1.2rem}
-  .hero{height:320vh}
+  .hero{height:560vh}
   .letter-grid,.reason-grid{grid-template-columns:1fr}
   .portrait{max-width:440px}
   .num-grid{grid-template-columns:1fr 1fr}

@@ -1,7 +1,7 @@
 // Hero orbit scrub. Primary path: a pre-extracted JPG frame sequence drawn to a canvas.
 // Fallback: scrub the mp4's currentTime if the frames are missing.
 
-const TOTAL_FRAMES = 193; // set by extract-frames.sh
+const TOTAL_FRAMES = 340; // set by extract-frames.sh (21s stage clip at 16fps)
 const FRAME_PATH = 'assets/frames/orbit/orbit_';
 
 export function initScrub({ canvas, video, onProgress }) {
