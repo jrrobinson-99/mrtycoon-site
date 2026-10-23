@@ -4,6 +4,12 @@
 https://mrtycoon.pages.dev/*
   X-Robots-Tag: noindex
 
+# /book/ is step 2 of the strategy-call flow (the calendar). Visitors reach it from the GHL form's redirect,
+# never from search — keep it out of search engines on every hostname, and never serve it stale.
+/book/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: public, max-age=0, must-revalidate
+
 # Fingerprinted media never changes — cache it hard.
 /assets/video/*
   Cache-Control: public, max-age=31536000, immutable

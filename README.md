@@ -4,6 +4,12 @@ Scroll site built around one idea: **the machine does the grind, you get him.**
 Midnight navy, pinstripes, platinum. Everything drives to the strategy call.
 
 > **Palette rule: silver or platinum, never gold.** Navy and pinstripe navy.
+> One exception, by client request 2026-10-23: the prices in the Investment section are bold gold. Nothing else.
+
+> **Type:** Playfair Display for headlines, quotes and numbers (`--display` in `site.css`, weight 600 or
+> heavier), Manrope for body, JetBrains Mono for labels. Playfair replaced Bodoni Moda on 2026-10-23 because
+> Bodoni's hairline strokes disappeared on the navy ground. All three load from Google Fonts in the `<head>` of
+> `index.html` and `book/index.html` — change the font link in both if the faces ever change.
 
 ## Run it locally
 
@@ -21,6 +27,7 @@ Then open <http://localhost:8080>. It must be served over http — opening
 ```
 public/                       <- this folder is what deploys
   index.html                  the page and all its copy
+  book/index.html             step 2 of the strategy-call flow: the GHL calendar, reached from the form's redirect
   _headers                    Cloudflare cache rules
   assets/css/site.css         every style: colours, glass, layout, phone rules
   assets/js/main.js           boot, preloader, hero choreography, shared frame loop
@@ -52,15 +59,32 @@ HTML and the script only animates it, so a failed script can never show "$0". If
 changes, update both the visible number and its `data-count`. The Machine scene and the
 Machine price card describe the same package — change one, change the other.
 
+**The prices are gold** (`.invest-price` and the `$297/month` in `.invest-sub`, via `--gold` and
+`--gold-metal` in `site.css`). That is the one exception to the palette rule, asked for by the client
+on 2026-10-23. Don't use the gold tokens anywhere else.
+
+**The $100 strategy-call fee** appears in four places in `index.html`: the nav button, the hero
+button, the Investment button, and the one-line `.close-fee` note above the application form. The
+site only states the fee — GHL collects it. If the fee changes, change all four.
+
 ## Before this goes live
 
-- [x] **GoHighLevel calendar embedded** in the close section (`.ghl-frame` in `index.html`).
-      Bookings land in GHL. No custom form — capture always goes through GHL.
+- [x] **GoHighLevel application form embedded** in the close section of `index.html`
+      (the "Sprint Application" form, GHL's standard inline embed plus their `form_embed.js`).
+      Submissions land in GHL. No custom form — capture always goes through GHL.
       Don't add `loading="lazy"` to that iframe: GHL's script keeps the frame off-screen
       until it loads, so a lazy frame never loads and the panel stays empty.
-      The calendar's look (white card, see-through at rest, solid on hover or focus) lives on
+      The form's look (white card, see-through at rest, solid on hover or focus) lives on
       the `.ghl-wrap` div around it, because GHL's script overwrites styles set on the iframe
       itself. To change how see-through it is, edit the `opacity` on `.ghl-wrap` in `site.css`.
+      GHL's script sets the iframe's height to fit the whole form, so it is never cut off.
+- [x] **GoHighLevel calendar** moved to `public/book/index.html` (step 2). Same embed rules as above.
+      The page is `noindex, nofollow` (meta tag and a `/book/*` rule in `_headers`).
+- [x] **GHL side — the form's on-submit redirect** must point at the live site's `/book/` page
+      (today that is `https://mrtycoon.pages.dev/book/`; change it when a real domain is attached).
+      Until it is set, applicants never reach the calendar. The site cannot set this.
+- [ ] **GHL side — the $100 call fee** is collected in GHL (calendar payment or the form), not on
+      the site. Confirm it is switched on before the page goes live saying "$100".
 - [ ] Work through the local launch checklist (`LAUNCH-NOTES.md`, not in this repo).
 
 ## Deploying to Cloudflare Pages
