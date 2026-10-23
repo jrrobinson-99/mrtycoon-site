@@ -83,7 +83,7 @@ site only states the fee — GHL collects it. If the fee changes, change all fou
 - [x] **GHL side — the form's on-submit redirect** must point at the live site's `/book/` page
       (today that is `https://mrtycoon.pages.dev/book/`; change it when a real domain is attached).
       Until it is set, applicants never reach the calendar. The site cannot set this.
-- [ ] **GHL side — the $100 call fee** is collected in GHL (calendar payment or the form), not on
+- [x] **GHL side — the $100 call fee** is collected in GHL (calendar payment or the form), not on
       the site. Confirm it is switched on before the page goes live saying "$100".
 - [ ] Work through the local launch checklist (`LAUNCH-NOTES.md`, not in this repo).
 

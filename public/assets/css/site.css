@@ -93,6 +93,9 @@ main{position:relative;z-index:1}
 [data-reveal].is-in{opacity:1;translate:0 0}
 .w{display:inline-block;overflow:hidden;vertical-align:top;padding:.06em .08em .16em;margin:-.06em -.08em -.16em}
 .wi{display:inline-block;translate:0 115%;transition:translate 1s var(--ease);transition-delay:calc(var(--i)*55ms)}
+/* the metal words carry the clip-text gradient on their own inline-block box, which is only line-height tall:
+   italic tails (j, g, y) hang below it and would paint transparent. Padding gives them room; the margin cancels it. */
+.wi.metal{padding-bottom:.14em;margin-bottom:-.14em}
 .is-in .wi{translate:0 0}
 
 /* ---------- preloader ---------- */
@@ -196,6 +199,7 @@ main{position:relative;z-index:1}
 .num{padding:2.2rem 1.8rem 2rem;min-height:15rem;display:flex;flex-direction:column;justify-content:space-between}
 .num:nth-child(2){transition-delay:.08s}.num:nth-child(3){transition-delay:.16s}.num:nth-child(4){transition-delay:.24s}
 .num-val{font-family:var(--display);font-weight:600;line-height:.9;font-size:clamp(3.6rem,7vw,6.4rem);
+  font-variant-numeric:lining-nums tabular-nums;padding-bottom:.12em;margin-bottom:-.12em;
   background:var(--metal);-webkit-background-clip:text;background-clip:text;color:transparent}
 .num-val small{font-size:.45em;font-weight:600}
 .num-lbl{font-size:.88rem;color:var(--text-dim);line-height:1.5;margin-top:1.4rem}
@@ -388,8 +392,12 @@ main{position:relative;z-index:1}
 .chip{padding:.3rem .7rem;border-radius:999px;border:1px solid rgba(143,188,255,.5);background:rgba(143,188,255,.08);
   color:var(--ice);font-size:.56rem;letter-spacing:.16em}
 /* gold here only, by client request 2026-10-23 — the rest of the page stays platinum */
+/* The gradient only paints inside the box, so anything below it goes transparent. Playfair's default figures hang
+   below the baseline and the comma always does: lining-nums puts the digits on the baseline, and the padding (cancelled
+   by the margin, so nothing below moves) gives the comma painted room. tabular keeps the count-up from jittering. */
 .invest-price{margin-top:1.4rem;font-family:var(--display);font-weight:700;line-height:.9;
-  font-size:clamp(3.4rem,6.6vw,5.8rem);font-variant-numeric:tabular-nums;
+  font-size:clamp(3.4rem,6.6vw,5.8rem);font-variant-numeric:lining-nums tabular-nums;
+  padding-bottom:.12em;margin-bottom:-.12em;
   background:var(--gold-metal);-webkit-background-clip:text;background-clip:text;color:transparent}
 .invest-price small{font-size:.42em;font-weight:600;vertical-align:.95em;margin-right:.08em}
 .invest-sub{margin-top:1rem;font-size:1.02rem;color:var(--text)}
